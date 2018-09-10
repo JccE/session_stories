@@ -24,8 +24,13 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
-group :development do
+group :test do
   gem 'capybara', '~> 3.7', '>= 3.7.1'
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
+end
+
+group :development do
+  # gem 'capybara', '~> 3.7', '>= 3.7.1'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
