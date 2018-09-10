@@ -1,2 +1,24 @@
-<h1>Sessions#index</h1>
-<p>Find me in app/views/sessions/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+<h2>sessions</h2>
+
+<% @sessions.each do |session| %>
+
+
+  <p>
+    <strong>Title:</strong>
+    <%= session.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= session.description %>
+  </p>
+
+
+  <p>
+    <strong>Favorite?:</strong>
+    <%= session.is_favorite %>
+  </p>
+
+  <%= link_to 'Edit', edit_session_path(session) %> |
+<% end %>

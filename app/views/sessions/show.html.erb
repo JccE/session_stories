@@ -1,2 +1,20 @@
-<h1>Sessions#show</h1>
-<p>Find me in app/views/sessions/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @session.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @session.description %>
+</p>
+
+
+<p>
+  <strong>Favorite?:</strong>
+  <%= @session.is_favorite %>
+</p>
+
+<%= link_to 'Edit', edit_session_path(@session) %> |
+<%= link_to 'Back', sessions_path %>
