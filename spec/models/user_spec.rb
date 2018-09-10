@@ -40,30 +40,34 @@ RSpec.describe User, type: :model do
       user.email = "J@J.CoM"
       expect(user).to validate_uniqueness_of(:email)
     end
-  end
-      # fix this problem by creating a method that downcases, then call before_save on it
-      # this just tests the method
-      describe "#downcase_email" do
-        it "makes the email attribute lower case" do
-          # user merge to add other attributes
-          ## takes two hashes and merges them together
-          user = User.new(valid_attributes.merge(email: "J@J.CoM"))
 
-          expect{ user.downcase_email}.to change{ user.email }.
-          from("J@J.CoM").
-          to("j@j.com")
-        end
-
-
-        # please check for case sensitive email input
-        it "downcases an email before saving" do
-          user = User.new(valid_attributes)
-          user.email = "J@J.CoM"
-          expect(user.save).to be true
-          expect(user.email).to eq("j@j.com")
-        end
-
-      end
-
+    it "requires the email address to look like an email" do
+      user.email = "jimmy"
+      expect(user).to_not be_valid
     end
+  end
+
+  describe "#downcase_email" do
+    it "makes the email attribute lower case" do
+
+      user = User.new(valid_attributes.merge(email: "J@J.CoM"))
+
+      expect{ user.downcase_email}.
+      to change{ user.email }.
+      from("J@J.CoM").
+      to("j@j.com")
+    end
+
+
+
+    it "downcases an email before saving" do
+      user = User.new(valid_attributes)
+      user.email = "J@J.CoM"
+      expect(user.save).to be true
+      expect(user.email).to eq("j@j.com")
+    end
+
+  end
+
+end
 
