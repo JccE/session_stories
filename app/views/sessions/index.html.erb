@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 <h2>sessions</h2>
 
+
+
+
 <% @sessions.each do |session| %>
 
 
@@ -20,5 +23,6 @@
     <%= session.is_favorite %>
   </p>
 
-  <%= link_to 'Edit', edit_session_path(session) %> |
+  <%= link_to 'Edit', edit_session_path(session) %>
+
 <% end %>

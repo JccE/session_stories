@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SessionStories</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>SessionStories</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+
+  <div class="nav">
+    <h1><%= link_to "SessionStories", root_path %></h1>
+    <ul>
+      <li><%= link_to "Articles", root_path %></li>
+      <li><%= link_to "Photos", root_path %></li>
+      <li><%= link_to 'Sign Up', new_user_path %> | <%= link_to 'Sign In', new_user_path %></li>
+    </ul>
+    <br>
+  </div>
+
+
+  <button><%= link_to "Sign In", new_user_path %></button>
+
+  <%= yield %>
+
+  <% flash.each do |type, message| %>
+  <div class="alert flash <%= type %>">
+    <%= message %>
+  </div>
+  <% end %>
+</body>
 </html>
