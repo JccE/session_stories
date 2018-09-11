@@ -17,11 +17,11 @@
       <li><%= link_to "Articles", root_path %></li>
       <li><%= link_to "Photos", root_path %></li>
       <% if !@current_user %>
-        <li><%= link_to 'Sign Up', new_user_path %></li>
-        <li><%= link_to 'Sign In', new_user_path %></li>
+      <li><%= link_to 'Sign Up', new_user_path %></li>
+      <li><%= link_to 'Sign In', new_user_path %></li>
 
       <% end %>
-  <button><%= link_to "Logout", :logout %></button>
+      <%= link_to "Logout", logout_path %>
     </ul>
     <br>
   </div>

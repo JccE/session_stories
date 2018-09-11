@@ -35,10 +35,10 @@ class UsersController < ApplicationController
 
 
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'User was successfully destroyed.' }
-    end
+    user = User.find(session[:user_id])
+    user.destroy
+    session[:user_id] = nil
+    redirect_to root_path, notice: 'User was successfully destroyed.'
   end
 
   private

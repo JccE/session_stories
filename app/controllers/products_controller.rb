@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :require_user
+  # before_action :require_user
   # before_action :find_sessions
 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
@@ -12,14 +12,14 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    @product = @sessions.products.new
   end
 
   def edit
   end
 
   def create
-    @product = @sessions.product.new(product_params)
+    @product = @sessions.products.new(product_params)
 
     respond_to do |format|
       if @product.save

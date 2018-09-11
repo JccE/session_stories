@@ -15,9 +15,6 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
-    user = User.find_by(email: params[:email])
-    session[:user_id] = nil
-    user.destroy
-    redirect_to root_path, notice: 'User was successfully destroyed.'
+reset_session
   end
 end
