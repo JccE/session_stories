@@ -4,11 +4,11 @@ class SessionsController < ApplicationController
   before_action :set_session, only: [:show, :edit, :update, :destroy]
 
   def index
-    @sessions = Session.all
+    @sessions = current_user.sessions
   end
 
   def new
-    @session = Session.new
+    @session = current_user.sessions.new
   end
 
   def show
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @session = Session.new(session_params)
+    @session = current_user.sessions.new(session_params)
 
     respond_to do |format|
       if @session.save
@@ -53,7 +53,7 @@ class SessionsController < ApplicationController
   private
 
   def set_session
-    @session = Session.find(params[:id])
+    @session = current_user.sessions.find(params[:id])
   end
 
   def session_params
