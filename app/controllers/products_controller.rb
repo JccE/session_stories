@@ -12,14 +12,14 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = @sessions.products.new
+    @product = @sessions.product.new
   end
 
   def edit
   end
 
   def create
-    @product = @sessions.products.new(product_params)
+    @product = @sessions.product.new(product_params)
 
     respond_to do |format|
       if @product.save
