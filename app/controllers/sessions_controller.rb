@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+
+  before_action :require_user
   before_action :set_session, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -20,11 +22,12 @@ class SessionsController < ApplicationController
 
     respond_to do |format|
       if @session.save
+        flash[:success] = "Added new session"
         format.html { redirect_to @session, notice: 'Session was successfully created.' }
-        format.json { render :show, status: :created, location: @session }
+
       else
+        flash[:error] = "There was a problem adding the session."
         format.html { render :new }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -33,10 +36,8 @@ class SessionsController < ApplicationController
     respond_to do |format|
       if @session.update(session_params)
         format.html { redirect_to @session, notice: 'Session was successfully updated.' }
-        format.json { render :show, status: :ok, location: @session }
       else
         format.html { render :edit }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,7 +47,6 @@ class SessionsController < ApplicationController
     @session.destroy
     respond_to do |format|
       format.html { redirect_to sessions_url, notice: 'Session was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
